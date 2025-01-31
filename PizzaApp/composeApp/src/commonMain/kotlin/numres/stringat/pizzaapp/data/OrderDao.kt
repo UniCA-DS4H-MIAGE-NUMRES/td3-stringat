@@ -18,4 +18,8 @@ interface OrderDao {
     @Transaction
     @Query("SELECT * FROM orders")
     fun getAllOrdersWithPizzas(): Flow<List<OrderWithPizzas>>
+
+    // Nouvelle requête pour récupérer le dernier ID inséré
+    @Query("SELECT last_insert_rowid()")
+    suspend fun getLastInsertedOrderId(): Long
 }

@@ -21,7 +21,7 @@ kotlin {
 
     jvm("desktop")
 
-    @OptIn(ExperimentalWasmDsl::class)
+    /*@OptIn(ExperimentalWasmDsl::class)
     wasmJs {
         moduleName = "composeApp"
         browser {
@@ -30,7 +30,7 @@ kotlin {
             }
         }
         binaries.executable()
-    }
+    }*/
 
     sourceSets {
         val commonMain by getting {
@@ -65,12 +65,12 @@ kotlin {
             }
         }
 
-        val wasmJsMain by getting {
+        /*val wasmJsMain by getting {
             dependencies {
                 //implementation(libs.kotlinx.coroutines.core)
                 implementation(libs.sqldelight.worker.driver)
             }
-        }
+        }*/
     }
 }
 
@@ -81,6 +81,8 @@ sqldelight {
         }
     }
 }
+
+
 
 android {
     namespace = "numres.stringat.pizzaapp"

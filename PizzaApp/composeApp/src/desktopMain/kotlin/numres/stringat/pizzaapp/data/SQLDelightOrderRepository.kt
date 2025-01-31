@@ -8,10 +8,8 @@ import com.squareup.sqldelight.db.SqlDriver
 import com.squareup.sqldelight.sqlite.driver.JdbcSqliteDriver
 
 class SQLDelightOrderRepository(driver: SqlDriver) : OrderRepository {
-    private val database = Database(driver) // Assurez-vous que Database est généré par SQLDelight
+    private val database = Database(driver)
     private val orderQueries = database.orderQueries
-
-    private val ordersFlow = MutableStateFlow<List<OrderWithPizzas>>(emptyList())
 
     override fun getAllOrdersWithPizzas(): Flow<List<OrderWithPizzas>> {
         return orderQueries.getOrdersWithPizzas()
@@ -19,15 +17,22 @@ class SQLDelightOrderRepository(driver: SqlDriver) : OrderRepository {
             .mapToList()
     }
 
-    override suspend fun insertOrder(pizzas: List<PizzaOrder>, totalPrice: Double) {
+    override suspend fun insertOrder(pizzas: List<PizzaOrder>, totalPrice: Double): Long {
         orderQueries.transaction {
             orderQueries.insertOrder(totalPrice)
-            val orderId = orderQueries.lastInsertRowId().executeAsOne().toInt()
-
-            pizzas.forEach { pizza ->
-                orderQueries.insertPizzaOrder(orderId, pizza.name, pizza.quantity, pizza.extraCheese)
-            }
         }
+
+        val orderId = orderQueries.lastInsertRowId().executeAsOne().toInt()
+
+        pizzas.forEach { pizza ->
+            orderQueries.insertPizzaOrder(orderId, pizza.name, pizza.quantity, pizza.extraCheese)
+        }
+
+        return orderId.toLong()
+    }
+
+    override suspend fun getLastInsertedOrderId(): Long {
+        return orderQueries.lastInsertRowId().executeAsOne()
     }
 }
 
