@@ -1,18 +1,32 @@
-*.iml
-.kotlin
-.gradle
+# Ignorer les fichiers de build
+/build/
 **/build/
-xcuserdata
-!src/**/build/
+.gradle/
+.idea/
+.kotlin/
+.cxx/
+.externalNativeBuild/
+
+# Fichiers spécifiques à Android Studio
 local.properties
-.idea
-.DS_Store
-captures
-.externalNativeBuild
-.cxx
+captures/
+
+# Ignorer les fichiers Xcode
+xcuserdata/
 *.xcodeproj/*
 !*.xcodeproj/project.pbxproj
 !*.xcodeproj/xcshareddata/
 !*.xcodeproj/project.xcworkspace/
 !*.xcworkspace/contents.xcworkspacedata
 **/xcshareddata/WorkspaceSettings.xcsettings
+
+# Fichiers macOS inutiles
+.DS_Store
+
+# Ignorer les caches de Gradle
+**/gradle/wrapper/**/
+**/gradle/caches/**/
+**/gradle/daemon/**/
+**/gradle/native/**/
+**/gradle/gradle-app/**/
+**/gradle/generated-gradle-jars.lock
