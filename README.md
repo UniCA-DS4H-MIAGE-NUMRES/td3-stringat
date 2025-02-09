@@ -50,3 +50,7 @@ http://localhost:8080
 ## Author
 
 - **Théo STRINGAT**
+
+## Lien de la vidéo
+
+https://drive.google.com/file/d/1jH6ED5m1kGNV7RwMjJ53Va8bMCEQUYPC/view?usp=sharing
