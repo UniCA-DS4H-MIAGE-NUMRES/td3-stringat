@@ -13,6 +13,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import org.jetbrains.compose.resources.painterResource
+import org.koin.mp.KoinPlatform.getKoinOrNull
+import td.numres.pizzaapp.di.initKoin
 import td.numres.pizzaapp.screens.*
 import td.numres.pizzaapp.viewmodel.CartViewModel
 import td.numres.pizzaapp.viewmodel.OrderViewModel
@@ -22,6 +24,13 @@ import test_kmp.composeapp.generated.resources.compose_multiplatform
 
 @Composable
 fun App() {
+    LaunchedEffect(Unit) {
+        if (getKoinOrNull() == null) {
+            initKoin()
+        }
+    }
+
+
     MaterialTheme {
         var currentScreen = remember { mutableStateOf("welcome") }
         val pizzaViewModel = remember { PizzaViewModel() }
