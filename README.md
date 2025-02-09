@@ -1,27 +1,27 @@
-# PizzApp 🍕
+# PizzaApp
 
-PizzApp est une application multiplateforme développée en **Kotlin Multiplatform (KMP)** et **Jetpack Compose Multiplatform**.
+PizzaApp est une application multiplateforme développée en **Kotlin Multiplatform (KMP)** et **Jetpack Compose Multiplatform**.
 
-## 📋 Prérequis
+## Prérequis
 
 - **Gradle 8.9** (utilisé personnellement)
 - **JDK 11+**
 - **IntelliJ IDEA**
 - **Node.js** (pour WASM)
 
-## 🚀 Lancer le projet
+## Lancer le projet
 
-### 📱 Android
+### Android
 
 Lancer **MainActivity** depuis Android Studio.
 
-### 💻 Desktop (Windows, macOS, Linux)
+### Desktop (Windows, macOS, Linux)
 
 ```sh
 ./gradlew run
 ```
 
-### 🌍 Web (WASM)
+### Web (WASM)
 
 ```sh
 ./gradlew wasmJsBrowserRun
@@ -33,16 +33,20 @@ Puis ouvrir :
 http://localhost:8080
 ```
 
-## ⚙️ Structure du projet
+## Structure du projet
 
 - **commonMain/** : Code partagé
 - **androidMain/** : Android
 - **desktopMain/** : Desktop
 - **wasmJsMain/** : Web
 
-## 🛠 Technologies utilisées
+## Technologies utilisées
 
 - **Kotlin Multiplatform (KMP)**
 - **Jetpack Compose**
 - **SQLDelight** (Désactivé temporairement sur Android)
 - **Koin** (Injection de dépendances)
+
+## Author
+
+- **Théo STRINGAT**
