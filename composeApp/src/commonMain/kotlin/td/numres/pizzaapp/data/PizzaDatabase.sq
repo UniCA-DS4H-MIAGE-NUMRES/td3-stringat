@@ -1,0 +1,25 @@
+CREATE TABLE OrderEntity (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    price REAL NOT NULL
+);
+
+CREATE TABLE PizzaOrder (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    orderId INTEGER NOT NULL,
+    name TEXT NOT NULL,
+    quantity INTEGER NOT NULL,
+    extraCheese INTEGER NOT NULL,
+    FOREIGN KEY(orderId) REFERENCES OrderEntity(id)
+);
+
+selectAllOrders:
+SELECT * FROM OrderEntity;
+
+insertOrder:
+INSERT INTO OrderEntity (id, price) VALUES (?, ?);
+
+selectPizzasByOrder:
+SELECT * FROM PizzaOrder WHERE orderId = ?;
+
+insertPizzaOrder:
+INSERT INTO PizzaOrder (id, orderId, name, quantity, extraCheese) VALUES (?, ?, ?, ?, ?);
