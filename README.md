@@ -61,6 +61,7 @@ http://localhost:8080
 ## Author
 
 - **Théo STRINGAT**
+- **Sawsen EL BAHRI**
 
 ---
 
