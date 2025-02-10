@@ -5,19 +5,18 @@ import kotlinx.serialization.json.Json
 import td.numres.pizzaapp.model.OrderWithPizzas
 import java.io.File
 
-actual class OrderStorage actual constructor(private val context: Any?) {
 
-    private val file = File("orders.json")
+actual class OrderStorage actual constructor(context: Any?) {
+
+    private val json = Json { prettyPrint = true }
 
     actual fun saveOrders(orders: List<OrderWithPizzas>) {
-        file.writeText(Json.encodeToString(orders))
+        val jsonString = json.encodeToString(orders)
+        File("orders.json").writeText(jsonString)
     }
 
     actual fun loadOrders(): List<OrderWithPizzas> {
-        return if (file.exists()) {
-            Json.decodeFromString(file.readText())
-        } else {
-            emptyList()
-        }
+        val jsonString = File("orders.json").readText()
+        return json.decodeFromString<List<OrderWithPizzas>>(jsonString)
     }
 }

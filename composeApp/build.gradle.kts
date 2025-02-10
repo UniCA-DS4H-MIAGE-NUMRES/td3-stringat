@@ -11,6 +11,7 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.sqlDelight)
+    alias(libs.plugins.kotlinxSerialization)
 }
 
 sqldelight {
@@ -111,6 +112,7 @@ kotlin {
                 implementation(libs.compose.preview)
                 implementation(libs.koin.core)
                 implementation(libs.koin.compose)
+                implementation(libs.kotlinx.serialization.json)
             }
         }
 

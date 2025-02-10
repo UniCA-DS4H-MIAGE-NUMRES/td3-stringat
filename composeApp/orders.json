@@ -1,0 +1,17 @@
+[
+    {
+        "order": {
+            "id": 0,
+            "totalPrice": 10.0
+        },
+        "pizzas": [
+            {
+                "id": 1,
+                "orderId": 0,
+                "name": "Capricciosa",
+                "quantity": 1,
+                "extraCheese": 50
+            }
+        ]
+    }
+]
