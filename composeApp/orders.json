@@ -2,6 +2,21 @@
     {
         "order": {
             "id": 0,
+            "totalPrice": 12.0
+        },
+        "pizzas": [
+            {
+                "id": 1,
+                "orderId": 0,
+                "name": "Quattro Formaggi",
+                "quantity": 1,
+                "extraCheese": 50
+            }
+        ]
+    },
+    {
+        "order": {
+            "id": 0,
             "totalPrice": 10.0
         },
         "pizzas": [
@@ -9,6 +24,21 @@
                 "id": 1,
                 "orderId": 0,
                 "name": "Capricciosa",
+                "quantity": 1,
+                "extraCheese": 50
+            }
+        ]
+    },
+    {
+        "order": {
+            "id": 0,
+            "totalPrice": 8.0
+        },
+        "pizzas": [
+            {
+                "id": 1,
+                "orderId": 0,
+                "name": "Margherita",
                 "quantity": 1,
                 "extraCheese": 50
             }

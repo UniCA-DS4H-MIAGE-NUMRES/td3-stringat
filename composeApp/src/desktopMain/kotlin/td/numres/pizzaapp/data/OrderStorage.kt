@@ -9,14 +9,34 @@ import java.io.File
 actual class OrderStorage actual constructor(context: Any?) {
 
     private val json = Json { prettyPrint = true }
+    private val file = File("orders.json")
 
     actual fun saveOrders(orders: List<OrderWithPizzas>) {
-        val jsonString = json.encodeToString(orders)
-        File("orders.json").writeText(jsonString)
+        // Charge les commandes existantes si le fichier existe, sinon une liste vide
+        val existingOrders = if (file.exists()) {
+            try {
+                json.decodeFromString<List<OrderWithPizzas>>(file.readText())
+            } catch (e: Exception) {
+                emptyList()
+            }
+        } else {
+            emptyList()
+        }
+        // Combine les commandes existantes avec les nouvelles
+        val combinedOrders = existingOrders + orders
+        // Réécrit le fichier avec la liste combinée
+        file.writeText(json.encodeToString(combinedOrders))
     }
 
     actual fun loadOrders(): List<OrderWithPizzas> {
-        val jsonString = File("orders.json").readText()
-        return json.decodeFromString<List<OrderWithPizzas>>(jsonString)
+        return if (file.exists()) {
+            try {
+                json.decodeFromString(file.readText())
+            } catch (e: Exception) {
+                emptyList()
+            }
+        } else {
+            emptyList()
+        }
     }
 }
